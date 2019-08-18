@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     public BGController bgControl;
     public ObjectCreator creator;
     public Inspector inspector;
+    public MessageBox messageBox;
 
     private UnityAction onTimeupAction;
     private UnityAction onGameOverAction;
@@ -34,6 +36,7 @@ public class GameController : MonoBehaviour
         creator.stopCreator();
         player.gameObject.GetComponent<Collider2D>().enabled = false;
         bgControl.completeGame();
+        messageBox.showMessage("恭喜你完成遊戲，是否從新開始遊戲?");
     }
 
     private void onBumpBlock()
@@ -52,5 +55,10 @@ public class GameController : MonoBehaviour
         player.gameObject.GetComponent<Collider2D>().enabled = false;
         bgControl.stopScroll();
         timer.stopTimer();
+        messageBox.showMessage("是否從新開始遊戲?");
+    }
+
+    public void restartGame(){
+        SceneManager.LoadScene("SampleScene");
     }
 }

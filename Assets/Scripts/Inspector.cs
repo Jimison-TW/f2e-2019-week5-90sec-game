@@ -14,8 +14,9 @@ public class Inspector : MonoBehaviour
     {
         if (currentLife < 3)
         {
-            lifeImgs[currentLife - 1].SetActive(true);
+            lifeImgs[currentLife].SetActive(true);
             currentLife++;
+            Debug.Log(currentLife - 1);
         }
     }
 
@@ -25,6 +26,7 @@ public class Inspector : MonoBehaviour
         {
             lifeImgs[currentLife - 1].SetActive(false);
             currentLife--;
+            Debug.Log(currentLife - 1);
         }
 
         if (currentLife <= 0) onGameOver.Invoke();

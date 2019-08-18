@@ -29,7 +29,7 @@ public class ObjectCreator : MonoBehaviour
     private void createObj()
     {
         int objIndex = Random.Range(0, 7);
-        int objOrder = Random.Range(1, 5);
+        int objOrder = Random.Range(0, 4);
         int objPos = Random.Range(-3, 1);
         GameObject obj = Instantiate(objGroup[objIndex], new Vector2(10, objPos), Quaternion.identity);
         obj.GetComponent<Renderer>().sortingOrder = objOrder;
