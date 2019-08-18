@@ -33,4 +33,16 @@ public class Player : MonoBehaviour
             player.Translate(Vector3.left * Time.deltaTime * 5);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Block")
+        {
+            Debug.Log("Block");
+        }
+        else if (other.gameObject.tag == "Weapon")
+        {
+            Debug.Log("Weapon");
+        }
+    }
 }
