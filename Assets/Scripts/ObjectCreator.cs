@@ -6,6 +6,7 @@ public class ObjectCreator : MonoBehaviour
 {
     public GameObject[] objGroup = new GameObject[7];
     private bool canCreate = true;
+    private bool isGameOver = false;
     private float createInterval = 1f;
 
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class ObjectCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canCreate)
+        if (!isGameOver && canCreate)
         {
             canCreate = false;
             int t = Random.Range(1, 3);
@@ -34,5 +35,10 @@ public class ObjectCreator : MonoBehaviour
         obj.GetComponent<Renderer>().sortingOrder = objOrder;
         canCreate = true;
         Destroy(obj, 5f);
+    }
+
+    public void stopCreator()
+    {
+        isGameOver = true;
     }
 }

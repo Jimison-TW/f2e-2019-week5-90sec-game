@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour
     private bool canMove = true;
     private int currentOrder = 2;
     private Renderer myRenderer;
+    private UnityAction bumpBlock;
+    private UnityAction bumpWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -45,10 +48,18 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Block")
         {
             Debug.Log("Block");
+            bumpBlock.Invoke();
         }
         else if (other.gameObject.tag == "Weapon")
         {
             Debug.Log("Weapon");
+            bumpWeapon.Invoke();
         }
+    }
+
+    public void setAction(UnityAction bumpWeapon, UnityAction bumpBlock)
+    {
+        this.bumpBlock = bumpBlock;
+        this.bumpWeapon = bumpWeapon;
     }
 }
